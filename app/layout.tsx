@@ -22,11 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Theme>
           <NavBar />
-<<<<<<< HEAD
           <main className="p-5">{children}</main>
-=======
-          <main>{children}</main>
->>>>>>> a60c6a5325b9075ccf643c253c86c91f4cf40c3a
         </Theme>
       </body>
     </html>
