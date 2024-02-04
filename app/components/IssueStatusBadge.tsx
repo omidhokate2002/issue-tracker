@@ -5,10 +5,10 @@ import { string } from "zod";
 
 const statusMap: Record<
   Status,
-  { label: string; color: "red" | "yellow" | "green" }
+  { label: string; color: "red" | "violet" | "green" }
 > = {
   OPEN: { label: "Open", color: "red" },
-  IN_PROGRESS: { label: "In Progress", color: "yellow" },
+  IN_PROGRESS: { label: "In Progress", color: "violet" },
   CLOSED: { label: "Closed", color: "green" },
 };
 
