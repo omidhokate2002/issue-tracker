@@ -1,6 +1,6 @@
 import { issueSchema } from "@/app/validationSchemas";
-import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/prisma/client";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function PATCH(
   request: NextRequest,
@@ -14,8 +14,6 @@ export async function PATCH(
   const issue = await prisma.issue.findUnique({
     where: { id: parseInt(params.id) },
   });
-
-  console.log(issue);
 
   if (!issue) {
     return NextResponse.json({ error: "Issue not found" }, { status: 404 });
