@@ -5,7 +5,7 @@ import prisma from "@/prisma/client";
 export async function PATCH(
   request: NextRequest,
   { params }: { params: { id: string } }
-){
+) {
   const body = await request.json();
   const validation = issueSchema.safeParse(body);
   if (!validation.success)
@@ -14,9 +14,9 @@ export async function PATCH(
   const issue = await prisma.issue.findUnique({
     where: { id: parseInt(params.id) },
   });
-	
-	console.log(issue)
-	
+
+  console.log(issue);
+
   if (!issue) {
     return NextResponse.json({ error: "Issue not found" }, { status: 404 });
   }
@@ -28,6 +28,25 @@ export async function PATCH(
       description: body.description,
     },
   });
-	
-	return NextResponse.json(updatedIssue, { status: 200 });
+
+  return NextResponse.json(updatedIssue, { status: 200 });
+}
+
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const issue = await prisma.issue.findUnique({
+    where: { id: parseInt(params.id) },
+  });
+
+  if (!issue)
+    return NextResponse.json({ error: "Issue not found" }, { status: 404 });
+
+  await prisma.issue.delete({ where: { id: issue.id } });
+
+  return NextResponse.json(
+    { message: "Issue deleted successfully" },
+    { status: 200 }
+  );
 }
