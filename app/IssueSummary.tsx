@@ -36,11 +36,11 @@ const IssueSummary = ({ open, inProgress, closed }: Props) => {
               className="text-sm font-semibold"
               href={`/issues/list?status=${container.status}`}
             >
-              {container.label}
+              <Text className="block">{container.label}</Text>
+              <Text size="5" className="font-bold mt-1">
+                {container.value}
+              </Text>
             </Link>
-            <Text size="5" className="font-bold">
-              {container.value}
-            </Text>
           </Flex>
         </Card>
       ))}

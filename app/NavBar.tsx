@@ -1,34 +1,24 @@
 "use client";
 
 import { Skeleton } from "@/app/components";
+import { Avatar, Box, DropdownMenu, Flex, Text } from "@radix-ui/themes";
+import classnames from "classnames";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
 import { AiFillBug } from "react-icons/ai";
-import classnames from "classnames";
-import {
-  Box,
-  Flex,
-  Container,
-  DropdownMenu,
-  Avatar,
-  Text,
-} from "@radix-ui/themes";
-import { useSession } from "next-auth/react";
 const NavBar = () => {
   return (
     <nav className="border-b mb-5 px-5 py-3">
-      <Container>
-        <Flex justify="between">
-          <Flex align="center" gap="3">
-            <Link href="/">
-              <AiFillBug />
-            </Link>
-            <NavLinks />
-          </Flex>
-          <AuthStatus />
+      <Flex justify="between">
+        <Flex align="center" gap="3">
+          <Link href="/">
+            <AiFillBug />
+          </Link>
+          <NavLinks />
         </Flex>
-      </Container>
+        <AuthStatus />
+      </Flex>
     </nav>
   );
 };
