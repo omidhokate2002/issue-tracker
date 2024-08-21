@@ -7,6 +7,7 @@ import QueryClientProvider from "./QueryClientProvider";
 import AuthProvider from "./auth/Provider";
 import "./globals.css";
 import "./theme-config.css";
+// @ts-ignore
 import getRandomQuote from "amazing-quotes"
 
 const quote = getRandomQuote();
