@@ -28,7 +28,7 @@ export async function PATCH(
   }
 
   const issue = await prisma.issue.findUnique({
-    where: { id: parseInt(params.id) },
+    where: { id: (params.id) },
   });
 
   if (!issue) {
@@ -56,7 +56,7 @@ export async function DELETE(
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   const issue = await prisma.issue.findUnique({
-    where: { id: parseInt(params.id) },
+    where: { id: (params.id) },
   });
 
   if (!issue)
