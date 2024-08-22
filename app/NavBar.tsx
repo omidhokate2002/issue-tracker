@@ -20,8 +20,14 @@ const NavBar = ({ toggleTheme, theme }: { toggleTheme: () => void, theme: "light
              <NavLinks theme={theme} />
           </Flex>
           <Flex align="center" gap="5">
-            <button onClick={toggleTheme} className="nav-link">
-              {theme === "dark" ?  <SunIcon width={20} height={20} /> : <MoonIcon width={20} height={20}/>}
+            <button
+              onClick={toggleTheme}
+              className="nav-link theme-toggle"
+            >
+              {theme === "dark" ?
+                <SunIcon width={20} height={20} /> :
+                <MoonIcon width={20} height={20} />
+              }
             </button>
             <AuthStatus />
           </Flex>

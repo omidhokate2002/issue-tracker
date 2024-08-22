@@ -44,3 +44,22 @@ body {
   color: unset;
   background-color: unset;
 }
+.theme-toggle {
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: rotate(30deg);
+}
+
+.theme-toggle svg {
+  transition: fill 0.3s ease;
+}
+
+.dark .theme-toggle svg {
+  fill: #ffffff;
+}
+
+.light .theme-toggle svg {
+  fill: #000000;
+}
