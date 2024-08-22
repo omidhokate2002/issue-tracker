@@ -44,12 +44,15 @@ body {
   color: unset;
   background-color: unset;
 }
+
 .theme-toggle {
   transition: transform 0.3s ease;
 }
 
-.theme-toggle:hover {
-  transform: rotate(30deg);
+@media (hover: hover) and (pointer: fine) {
+  .theme-toggle:hover {
+      transform: rotate(30deg);
+  
 }
 
 .theme-toggle svg {
@@ -62,4 +65,5 @@ body {
 
 .light .theme-toggle svg {
   fill: #000000;
+}
 }
