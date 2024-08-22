@@ -20,6 +20,22 @@ body {
 
 @layer utilities {
   .nav-link {
-    @apply text-zinc-500 hover:text-zinc-800 transition-colors;
+    @apply transition-colors;
+    }
+    
+    .nav-link-light {
+      @apply text-zinc-600 hover:text-zinc-900;
+    }
+    
+    .nav-link-dark {
+      @apply text-zinc-400 hover:text-zinc-50;
+    }
+    
+    .nav-link-active.nav-link-light {
+      @apply text-zinc-900;
+    }
+    
+    .nav-link-active.nav-link-dark {
+      @apply text-zinc-50;
   }
 }

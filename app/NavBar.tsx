@@ -1,20 +1,14 @@
-"use client";
-
+"use client"; 
 import { Skeleton } from "@/app/components";
-import {
-  Avatar,
-  Box,
-  Container,
-  DropdownMenu,
-  Flex,
-  Text,
-} from "@radix-ui/themes";
+import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import { Avatar, Box, Container, DropdownMenu, Flex, Text } from "@radix-ui/themes";
 import classnames from "classnames";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AiFillBug } from "react-icons/ai";
-const NavBar = () => {
+
+const NavBar = ({ toggleTheme, theme }: { toggleTheme: () => void, theme: "light" | "dark" }) => {
   return (
     <nav className="border-b mb-5 px-5 py-3">
       <Container>
@@ -23,16 +17,21 @@ const NavBar = () => {
             <Link href="/">
               <AiFillBug />
             </Link>
-            <NavLinks />
+             <NavLinks theme={theme} />
           </Flex>
-          <AuthStatus />
+          <Flex align="center" gap="5">
+            <button onClick={toggleTheme} className="nav-link">
+              {theme === "dark" ?  <SunIcon width={20} height={20} /> : <MoonIcon width={20} height={20}/>}
+            </button>
+            <AuthStatus />
+          </Flex>
         </Flex>
       </Container>
     </nav>
   );
 };
 
-const NavLinks = () => {
+const NavLinks = ({ theme }: { theme: "light" | "dark" }) => {
   const currentPath = usePathname();
 
   const links = [
@@ -46,7 +45,9 @@ const NavLinks = () => {
           <Link
             className={classnames({
               "nav-link": true,
-              "!text-zinc-900": link.href === currentPath,
+              "nav-link-active": link.href === currentPath,
+              "nav-link-light": theme === "light",
+              "nav-link-dark": theme === "dark",
             })}
             href={link.href}
           >
@@ -70,7 +71,6 @@ const AuthStatus = () => {
         Login
       </Link>
     );
-    return;
   }
   return (
     <Box>
@@ -99,4 +99,5 @@ const AuthStatus = () => {
     </Box>
   );
 };
+
 export default NavBar;

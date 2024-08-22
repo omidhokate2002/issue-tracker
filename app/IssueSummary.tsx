@@ -1,5 +1,5 @@
 import { Status } from "@prisma/client";
-import { Card, Flex, Text } from "@radix-ui/themes";
+import { Badge, Card, Flex, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
 
@@ -9,38 +9,54 @@ interface Props {
   closed: number;
 }
 
-const IssueSummary = ({ open, inProgress, closed }: Props) => {
-  const containers: { label: string; value: number; status: Status }[] = [
+const IssueSummary: React.FC<Props> = ({ open, inProgress, closed }) => {
+  const containers: Array<{
+    label: string;
+    value: number;
+    status: Status;
+    color: "red" | "yellow" | "green";
+  }> = [
     {
       label: "Open Issues",
       value: open,
       status: "OPEN",
+      color: "red",
     },
     {
       label: "In-Progress Issues",
       value: inProgress,
       status: "IN_PROGRESS",
+      color: "yellow",
     },
     {
       label: "Closed Issues",
       value: closed,
       status: "CLOSED",
+      color: "green",
     },
   ];
+
   return (
-    <Flex gap="4">
-      {containers.map((container) => (
-        <Card key={container.label}>
-          <Flex direction="column" gap="1">
-            <Link
-              className="text-sm font-semibold"
-              href={`/issues/list?status=${container.status}`}
-            >
-              {container.label}
-            </Link>
-            <Text size="5" className="font-bold">
-              {container.value}
+    <Flex gap="4" justify="between">
+      {containers.map(({ label, value, status, color }) => (
+        <Card key={label} style={{ flex: 1 }}>
+          <Flex direction="column" gap="2" align="start">
+            <Badge color={color} variant="soft">
+              {label}
+            </Badge>
+            <Text size="6" weight="bold">
+              {value}
             </Text>
+            <Link
+              href={`/issues/list?status=${status}`}
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                fontSize: "14px",
+              }}
+            >
+              View Details
+            </Link>
           </Flex>
         </Card>
       ))}
