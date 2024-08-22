@@ -24,8 +24,8 @@ const IssueDetails: React.FC<IssueDetailsProps> = ({ issue }) => {
         </Flex>
       </Flex>
       <Separator size="4" mb="4" />
-      <Card className="prose max-w-full">
-        <ReactMarkdown className="">
+      <Card className="py-6 max-w-full">
+        <ReactMarkdown>
           {issue.description}
         </ReactMarkdown>
       </Card>

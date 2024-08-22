@@ -39,3 +39,8 @@ body {
       @apply text-zinc-50;
   }
 }
+
+.EasyMDEContainer .CodeMirror {
+  color: unset;
+  background-color: unset;
+}
