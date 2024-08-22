@@ -37,10 +37,10 @@ const IssueSummary: React.FC<Props> = ({ open, inProgress, closed }) => {
   ];
 
   return (
-    <Flex gap="4" justify="between">
+    <Flex gap="4" justify="between" className="flex-wrap">
       {containers.map(({ label, value, status, color }) => (
-        <Card key={label} style={{ flex: 1 }}>
-          <Flex direction="column" gap="2" align="start">
+        <Card key={label} style={{ flex: 1 }} >
+          <Flex direction="column" gap="2" align="start" className="justify-center items-center text-center">
             <Badge color={color} variant="soft">
               {label}
             </Badge>
